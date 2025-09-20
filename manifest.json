@@ -1,11 +1,11 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "Formatted-Paster",
+	"name": "Formatted Paster",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
-	"isDesktopOnly": false
+	"description": "A plugin to paste content into the context with proper formatting.",
+	"author": "Yihoo.Kan",
+	"authorUrl": "https://github.com/SerenniaHan",
+	"fundingUrl": "https://github.com/SerenniaHan/obsidian-formatted-paster-plugin",
+	"isDesktopOnly": true
 }

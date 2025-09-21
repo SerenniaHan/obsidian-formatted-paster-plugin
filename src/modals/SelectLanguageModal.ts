@@ -45,5 +45,8 @@ export class SelectLanguageModal extends Modal {
     }
 
     onClose() {
+        super.onClose();
+        const { contentEl } = this;
+        contentEl.empty();
     }
 }

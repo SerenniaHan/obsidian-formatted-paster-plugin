@@ -4,6 +4,7 @@ import {
 	DEFAULT_SETTINGS,
 	FormattedPasterPluginSettingTab
 } from '../settings';
+import { getClipboardText, insertAtCursor } from '../utilities';
 
 export default class FormattedPasterPlugin extends Plugin {
 	settings: FormattedPasterPluginSettings;
@@ -11,21 +12,13 @@ export default class FormattedPasterPlugin extends Plugin {
 	async onload() {
 		await this.loadSettings();
 
-		function insertAtCursor(editor: Editor, text: string) {
-			const cursor = editor.getCursor();
-			editor.replaceRange(text, cursor);
-			editor.setCursor({ line: cursor.line, ch: cursor.ch + text.length });
-		}
-
 		// paste as a Header command
 		this.addCommand({
 			id: 'paste-as-header',
 			name: 'Paste As Header',
 			editorCallback: async (editor: Editor, _view: MarkdownView) => {
-
-				const clipboardText = await navigator.clipboard.readText();
+				const clipboardText = await getClipboardText();
 				if (!clipboardText) {
-					new Notice('Clipboard is empty!');
 					return;
 				}
 
@@ -41,10 +34,8 @@ export default class FormattedPasterPlugin extends Plugin {
 			id: 'paste-as-inline-code',
 			name: 'Paste As Inline Code',
 			editorCallback: async (editor: Editor, _view: MarkdownView) => {
-
-				const clipboardText = await navigator.clipboard.readText();
+				const clipboardText = await getClipboardText();
 				if (!clipboardText) {
-					new Notice('Clipboard is empty!');
 					return;
 				}
 
@@ -60,10 +51,8 @@ export default class FormattedPasterPlugin extends Plugin {
 			id: 'paste-as-code-block',
 			name: 'Paste As Code Block',
 			editorCallback: async (editor: Editor, _view: MarkdownView) => {
-
-				const clipboardText = await navigator.clipboard.readText();
+				const clipboardText = await getClipboardText();
 				if (!clipboardText) {
-					new Notice('Clipboard is empty!');
 					return;
 				}
 

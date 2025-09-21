@@ -1,29 +1,9 @@
-import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
-interface FormattedPasterPluginSettings {
-	code_language: Record<string, string>;
-}
-
-const DEFAULT_SETTINGS: FormattedPasterPluginSettings = {
-	code_language: {
-		'': 'Plain Text',
-		'csharp': 'C#',
-		'javascript': 'JavaScript',
-		'python': 'Python',
-		'java': 'Java',
-		'ruby': 'Ruby',
-		'go': 'Go',
-		'php': 'PHP',
-		'swift': 'Swift',
-		'kotlin': 'Kotlin',
-		'rust': 'Rust',
-		'typescript': 'TypeScript',
-		'json': 'JSON',
-		'html': 'HTML',
-		'css': 'CSS',
-		'bash': 'Bash',
-		'yaml': 'YAML',
-	}
-}
+import { App, Editor, MarkdownView, Modal, Notice, Plugin, Setting } from 'obsidian';
+import {
+	FormattedPasterPluginSettings,
+	DEFAULT_SETTINGS,
+	FormattedPasterPluginSettingTab
+} from '../settings';
 
 export default class FormattedPasterPlugin extends Plugin {
 	settings: FormattedPasterPluginSettings;
@@ -163,31 +143,5 @@ export class ChosenLanguageModal extends Modal {
 	}
 
 	onClose() {
-	}
-}
-class FormattedPasterPluginSettingTab extends PluginSettingTab {
-	plugin: FormattedPasterPlugin;
-
-	constructor(app: App, plugin: FormattedPasterPlugin) {
-		super(app, plugin);
-		this.plugin = plugin;
-	}
-
-	display(): void {
-		const { containerEl } = this;
-		containerEl.empty();
-
-		new Setting(containerEl)
-			.setName('Code Block Paster Setting')
-			.setDesc('This is a setting for the Code Block Paster plugin')
-			.addButton(button => {
-				button.setButtonText('Click me')
-					.onClick(async () => {
-						const json = JSON.stringify(this.plugin.settings.code_language, null, 2);
-						console.log(json);
-						new Notice(json);
-						await this.plugin.saveSettings();
-					});
-			});
 	}
 }

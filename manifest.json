@@ -6,6 +6,6 @@
 	"description": "A plugin to paste content into the context with proper formatting.",
 	"author": "Yihoo.Kan",
 	"authorUrl": "https://github.com/SerenniaHan",
-	"fundingUrl": "https://github.com/SerenniaHan/obsidian-formatted-paster-plugin",
+	"repository": "https://github.com/SerenniaHan/obsidian-formatted-paster-plugin.git",
 	"isDesktopOnly": true
 }

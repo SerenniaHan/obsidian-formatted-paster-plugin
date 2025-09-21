@@ -1,6 +1,7 @@
 import { Editor, MarkdownView, Notice, Command } from 'obsidian';
 import { CommandContext } from './types';
 import { getClipboardText, insertAtCursor } from '../utilities';
+import { SelectHeaderModal } from '../modals';
 
 /**
  * Create the paste as header command
@@ -15,10 +16,15 @@ export function createPasteAsHeaderCommand(context: CommandContext): Command {
                 return;
             }
 
-            const headerText = `# ${clipboardText.trim()}\n`;
-            console.log('Pasting header: ' + headerText);
-            insertAtCursor(editor, headerText);
-            new Notice(`Pasted as header! ${headerText}`);
+            new SelectHeaderModal(context.app, (headerLevel) => {
+                if (headerLevel === null) {
+                    return;
+                }
+
+                const headerText = `${headerLevel} ${clipboardText.trimStart().trimEnd()}\n`;
+                insertAtCursor(editor, headerText);
+                new Notice(`Pasted as header! ${headerText}`);
+            }).open();
         }
     };
 }

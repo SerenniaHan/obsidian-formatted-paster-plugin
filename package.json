@@ -1,16 +1,34 @@
 {
-	"name": "obsidian-sample-plugin",
+	"name": "obsidian-formatted-paster-plugin",
 	"version": "1.0.0",
-	"description": "This is a sample plugin for Obsidian (https://obsidian.md)",
+	"description": "A plugin to paste content into the context with proper formatting.",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
 		"version": "node version-bump.mjs && git add manifest.json versions.json"
 	},
-	"keywords": [],
-	"author": "",
+	"keywords": [
+		"obsidian",
+		"plugin",
+		"paste",
+		"formatting",
+		"clipboard",
+		"text-processing"
+	],
+	"author": {
+		"name": "Yihoo.Kan",
+		"url": "https://github.com/SerenniaHan"
+	},
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/SerenniaHan/obsidian-formatted-paster-plugin.git"
+	},
+	"homepage": "https://github.com/SerenniaHan/obsidian-formatted-paster-plugin",
+	"bugs": {
+		"url": "https://github.com/SerenniaHan/obsidian-formatted-paster-plugin/issues"
+	},
 	"devDependencies": {
 		"@types/node": "^16.11.6",
 		"@typescript-eslint/eslint-plugin": "5.29.0",
